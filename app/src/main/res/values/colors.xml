@@ -643,11 +643,13 @@
     <!--Texts-->
     <array name="texts_white">
         <item>@color/md_text_white</item>
+        <item>@color/md_text_white_87</item>
         <item>@color/md_secondary_text_icons_white</item>
         <item>@color/md_disabled_hint_text_white</item>
         <item>@color/md_divider_white</item>
     </array>
     <color name="md_text_white">#ffffffff</color>
+    <color name="md_text_white_87">#dfffffff</color>
     <color name="md_secondary_text_icons_white">#b3ffffff</color>
     <color name="md_disabled_hint_text_white">#4dffffff</color>
     <color name="md_divider_white">#1fffffff</color>

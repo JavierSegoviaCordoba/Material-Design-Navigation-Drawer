@@ -20,6 +20,6 @@
         android:layout_marginTop="@dimen/margin_padding_16_24"
         android:text="Your drawer content"
         android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
-        android:textColor="?android:textColorPrimary" />
+        android:textColor="?android:textColorPrimary"/>
 
 </LinearLayout>
