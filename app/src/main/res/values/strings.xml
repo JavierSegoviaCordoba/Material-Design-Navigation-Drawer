@@ -10,5 +10,6 @@
     <string name="action_about">About</string>
     <string name="website">desarrollador-android.com</string>
     <string name="github">GitHub: github.com/dahnark</string>
+    <string name="drawer_header_image">drawer header image</string>
 
 </resources>

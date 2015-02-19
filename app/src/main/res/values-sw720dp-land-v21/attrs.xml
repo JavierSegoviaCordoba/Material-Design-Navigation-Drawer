@@ -11,10 +11,10 @@
         <item name="android:layout_width">320dp</item>
     </style>
 
-    <dimen name="margin_padding_16_24">16dp</dimen>
-    <dimen name="margin_padding_72_80">72dp</dimen>
+    <dimen name="margin_padding_16_24">24dp</dimen>
+    <dimen name="margin_padding_72_80">80dp</dimen>
     <dimen name="margin_padding_8">8dp</dimen>
-    <dimen name="margin_padding_56_64">56dp</dimen>
+    <dimen name="margin_padding_56_64">64dp</dimen>
     <dimen name="margin_padding_48">48dp</dimen>
     <dimen name="margin_padding_72">72dp</dimen>
     <dimen name="profile_picture_64">64dp</dimen>

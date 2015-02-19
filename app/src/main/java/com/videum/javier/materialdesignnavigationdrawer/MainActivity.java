@@ -1,99 +1,45 @@
 package com.videum.javier.materialdesignnavigationdrawer;
 
-import android.content.res.Configuration;
-import android.os.Build;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.FrameLayout;
+import android.widget.Button;
+import android.widget.ImageView;
+
+import com.squareup.picasso.Picasso;
+import com.videum.javier.materialdesignnavigationdrawer.Utils.CircleTransformWhite;
 
 
-public class MainActivity extends ActionBarActivity {
+public class MainActivity extends ActionBarActivity implements View.OnClickListener {
 
-    FrameLayout statusBar;
     Toolbar toolbar;
     ActionBarDrawerToggle drawerToggle;
     DrawerLayout drawerLayout;
+    SharedPreferences sharedPreferences;
+    Button buttonRedLight, buttonRedDark, buttonIndigoLight, buttonIndigoDark;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        setupTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Cast toolbar and status bar
-        statusBar = (FrameLayout) findViewById(R.id.statusBar);
+        // Setup toolbar
         toolbar = (Toolbar) findViewById(R.id.toolbar);
-
-        // Get support to the toolbar and change its title
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Main Activity");
+        getSupportActionBar().setTitle("Navigation Drawer App");
 
-        // Setup Navigation drawer
-        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
-        View drawer = findViewById(R.id.scrimInsetsFrameLayout);
+        setupNavigationDrawer();
 
-        // Fix right margin to 56dp (portrait)
-        ViewGroup.LayoutParams layoutParams = drawer.getLayoutParams();
-        DisplayMetrics displayMetrics = getResources().getDisplayMetrics();
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            layoutParams.width = displayMetrics.widthPixels - (56 * Math.round(displayMetrics.density));
-        }
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            layoutParams.width = displayMetrics.widthPixels + (20 * Math.round(displayMetrics.density)) - displayMetrics.widthPixels / 2;
-        }
-
-        // Setup Drawer Icon
-        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
-        drawerLayout.setDrawerListener(drawerToggle);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-        drawerToggle.syncState();
-
-        // Fix portrait issues
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-            // Fix issues for KitKat setting Status Bar color primary
-            if (Build.VERSION.SDK_INT >= 19) {
-                TypedValue typedValue19 = new TypedValue();
-                MainActivity.this.getTheme().resolveAttribute(R.attr.colorPrimary, typedValue19, true);
-                final int color = typedValue19.data;
-                FrameLayout statusBar = (FrameLayout) findViewById(R.id.statusBar);
-                statusBar.setBackgroundColor(color);
-            }
-
-            // Fix issues for Lollipop, setting Status Bar color primary dark
-            if (Build.VERSION.SDK_INT >= 21) {
-                TypedValue typedValue21 = new TypedValue();
-                MainActivity.this.getTheme().resolveAttribute(R.attr.colorPrimaryDark, typedValue21, true);
-                final int color = typedValue21.data;
-                FrameLayout statusBar = (FrameLayout) findViewById(R.id.statusBar);
-                statusBar.setBackgroundColor(color);
-            }
-        }
-
-        // Fix landscape issues (only Lollipop)
-        if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            if (Build.VERSION.SDK_INT >= 19) {
-                TypedValue typedValue19 = new TypedValue();
-                MainActivity.this.getTheme().resolveAttribute(R.attr.colorPrimary, typedValue19, true);
-                final int color = typedValue19.data;
-                FrameLayout statusBar = (FrameLayout) findViewById(R.id.statusBar);
-                statusBar.setBackgroundColor(color);
-            }
-            if (Build.VERSION.SDK_INT >= 21) {
-                TypedValue typedValue = new TypedValue();
-                MainActivity.this.getTheme().resolveAttribute(R.attr.colorPrimaryDark, typedValue, true);
-                final int color = typedValue.data;
-                drawerLayout.setStatusBarBackgroundColor(color);
-            }
-        }
+        setupButtons();
     }
 
 
@@ -117,5 +63,89 @@ public class MainActivity extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void setupTheme() {
+        sharedPreferences = getSharedPreferences("VALUES", MODE_PRIVATE);
+        switch (sharedPreferences.getString("THEME", "REDLIGHT")) {
+            case "REDLIGHT":
+                setTheme(R.style.AppThemeRedLight);
+                break;
+            case "REDDARK":
+                setTheme(R.style.AppThemeRedDark);
+                break;
+            case "INDIGOLIGHT":
+                setTheme(R.style.AppThemeIndigoLight);
+                break;
+            case "INDIGODARK":
+                setTheme(R.style.AppThemeIndigoDark);
+                break;
+        }
+    }
+
+    public void setupNavigationDrawer() {
+
+        // Setup Navigation drawer
+        drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
+
+        // Setup Drawer Icon
+        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close);
+        drawerLayout.setDrawerListener(drawerToggle);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        drawerToggle.syncState();
+
+        String urlPicture, urlCover;
+        urlPicture = "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfp1/v/t1.0-1/p200x200/1424388_10151792392315878_146499977_n.jpg?oh=1201b30a151e242bc39e67d6aba32b86&oe=554BD3DE&__gda__=1431136939_25c3b0c44d23dc6c5d9153757f08d3f2";
+        urlCover = "https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xpa1/v/t35.0-12/p180x540/1473382_10151795016155878_455139729_o.jpg?oh=d5b18d06dddbf883cae6eac7796f1716&oe=54E79A6C&__gda__=1424516730_6c8a8de7f91a2ea1b54948011a1145a7";
+
+        ImageView imageViewPicture, imageViewCover;
+        imageViewPicture = (ImageView) findViewById(R.id.imageViewPicture);
+        imageViewPicture.setBackgroundColor(getResources().getColor(android.R.color.transparent));
+        imageViewCover = (ImageView) findViewById(R.id.imageViewCover);
+
+        Picasso.with(getApplicationContext()).load(urlPicture).transform(new CircleTransformWhite()).into(imageViewPicture);
+        Picasso.with(getApplicationContext()).load(urlCover).into(imageViewCover);
+
+        TypedValue typedValue = new TypedValue();
+        MainActivity.this.getTheme().resolveAttribute(R.attr.colorPrimaryDark, typedValue, true);
+        final int color = typedValue.data;
+        drawerLayout.setStatusBarBackgroundColor(color);
+    }
+
+    public void setupButtons() {
+        buttonRedLight = (Button) findViewById(R.id.buttonRedLight);
+        buttonRedLight.setOnClickListener(this);
+        buttonRedDark = (Button) findViewById(R.id.buttonRedDark);
+        buttonRedDark.setOnClickListener(this);
+        buttonIndigoLight = (Button) findViewById(R.id.buttonIndigoLight);
+        buttonIndigoLight.setOnClickListener(this);
+        buttonIndigoDark = (Button) findViewById(R.id.buttonIndigoDark);
+        buttonIndigoDark.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        sharedPreferences = getSharedPreferences("VALUES", MODE_PRIVATE);
+        Intent intent = new Intent(MainActivity.this, MainActivity.class);
+
+        switch (v.getId()) {
+            case R.id.buttonRedLight:
+                sharedPreferences.edit().putString("THEME", "REDLIGHT").apply();
+                startActivity(intent);
+                break;
+            case R.id.buttonRedDark:
+                sharedPreferences.edit().putString("THEME", "REDDARK").apply();
+                startActivity(intent);
+                break;
+            case R.id.buttonIndigoLight:
+                sharedPreferences.edit().putString("THEME", "INDIGOLIGHT").apply();
+                startActivity(intent);
+                break;
+            case R.id.buttonIndigoDark:
+                sharedPreferences.edit().putString("THEME", "INDIGODARK").apply();
+                startActivity(intent);
+                break;
+        }
     }
 }

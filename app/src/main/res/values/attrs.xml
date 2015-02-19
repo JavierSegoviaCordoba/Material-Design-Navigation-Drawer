@@ -3,8 +3,23 @@
     <declare-styleable name="ScrimInsetsView">
         <attr name="insetForeground" format="reference|color" />
     </declare-styleable>
+
     <bool name="fitsSystemWindows">false</bool>
-    <dimen name="statusBarHeight">0dp</dimen>
-    <dimen name="space">64dp</dimen>
-    <color name="inset">#0000</color>
+    <dimen name="status_bar_height">0dp</dimen>
+    <color name="status_bar_inset">#0000</color>
+    <dimen name="navigation_bar_and_padding_64">64dp</dimen>
+    <dimen name="drawer_margin">56dp</dimen>
+
+    <style name="drawer_width">
+        <item name="android:layout_width">match_parent</item>
+    </style>
+
+    <dimen name="margin_padding_16_24">16dp</dimen>
+    <dimen name="margin_padding_72_80">72dp</dimen>
+    <dimen name="margin_padding_8">8dp</dimen>
+    <dimen name="margin_padding_56_64">56dp</dimen>
+    <dimen name="margin_padding_48">48dp</dimen>
+    <dimen name="margin_padding_72">72dp</dimen>
+    <dimen name="profile_picture_64">64dp</dimen>
+    <dimen name="header_height">172dp</dimen>
 </resources>
