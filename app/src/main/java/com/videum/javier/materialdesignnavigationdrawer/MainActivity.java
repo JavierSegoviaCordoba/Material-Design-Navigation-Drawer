@@ -13,6 +13,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ToggleButton;
 
 import com.squareup.picasso.Picasso;
 import com.videum.javier.materialdesignnavigationdrawer.Utils.CircleTransformWhite;
@@ -25,6 +27,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     DrawerLayout drawerLayout;
     SharedPreferences sharedPreferences;
     Button buttonRedLight, buttonRedDark, buttonIndigoLight, buttonIndigoDark;
+    ToggleButton toggleButtonDrawer;
+    LinearLayout linearLayoutDrawerAccount, linearLayoutDrawerMain;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -111,6 +115,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         MainActivity.this.getTheme().resolveAttribute(R.attr.colorPrimaryDark, typedValue, true);
         final int color = typedValue.data;
         drawerLayout.setStatusBarBackgroundColor(color);
+
+        toggleButtonDrawer = (ToggleButton) findViewById(R.id.toggleButtonDrawer);
+        toggleButtonDrawer.setOnClickListener(this);
     }
 
     public void setupButtons() {
@@ -124,6 +131,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         buttonIndigoDark.setOnClickListener(this);
     }
 
+    // All onClick for all views
     @Override
     public void onClick(View v) {
         sharedPreferences = getSharedPreferences("VALUES", MODE_PRIVATE);
@@ -145,6 +153,17 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             case R.id.buttonIndigoDark:
                 sharedPreferences.edit().putString("THEME", "INDIGODARK").apply();
                 startActivity(intent);
+                break;
+            case R.id.toggleButtonDrawer:
+                linearLayoutDrawerAccount = (LinearLayout) findViewById(R.id.linearLayoutDrawerAccounts);
+                linearLayoutDrawerMain = (LinearLayout) findViewById(R.id.linearLayoutDrawerMain);
+                if (linearLayoutDrawerAccount.getVisibility() == View.VISIBLE){
+                    linearLayoutDrawerAccount.setVisibility(View.GONE);
+                    linearLayoutDrawerMain.setVisibility(View.VISIBLE);
+                }else {
+                    linearLayoutDrawerAccount.setVisibility(View.VISIBLE);
+                    linearLayoutDrawerMain.setVisibility(View.GONE);
+                }
                 break;
         }
     }
