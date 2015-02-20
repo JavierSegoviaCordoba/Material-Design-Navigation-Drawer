@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <bool name="fitsSystemWindows">false</bool>
-    <dimen name="status_bar_height">0dp</dimen>
+    <bool name="translucentStatusBar">true</bool>
+    <bool name="translucentNavigationBar">true</bool>
+    <dimen name="status_bar_height">25dp</dimen>
     <color name="status_bar_inset">#0000</color>
     <dimen name="navigation_bar_and_padding_64">64dp</dimen>
     <dimen name="drawer_margin">0dp</dimen>
@@ -15,7 +17,7 @@
     <dimen name="margin_padding_16_24">24dp</dimen>
     <dimen name="icon_size_24">24dp</dimen>
     <dimen name="profile_picture_small_40">40dp</dimen>
-    <dimen name="margin_padding_status_bar_16and25_41">16dp</dimen>
+    <dimen name="margin_padding_status_bar_16and25_41">41dp</dimen>
     <dimen name="margin_padding_48">48dp</dimen>
     <dimen name="item_height_48">48dp</dimen>
     <dimen name="item_height_56">56dp</dimen>

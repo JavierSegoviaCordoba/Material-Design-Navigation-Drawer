@@ -33,11 +33,11 @@ public class CircleTransformWhite implements Transformation {
         paintBorder.setColor(Color.WHITE);
         paintBorder.setStyle(Paint.Style.STROKE);
         paintBorder.setAntiAlias(true);
-        paintBorder.setStrokeWidth(7);
+        paintBorder.setStrokeWidth(8f);
 
         float r = size / 2f;
-        canvas.drawCircle(r, r, r, paint);
-        canvas.drawCircle(r, r, r - 4, paintBorder);
+        canvas.drawCircle(r, r, r-6f, paint);
+        canvas.drawCircle(r, r, r-4f, paintBorder);
 
         squaredBitmap.recycle();
         return bitmap;

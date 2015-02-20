@@ -11,6 +11,8 @@ import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -29,6 +31,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     Button buttonRedLight, buttonRedDark, buttonIndigoLight, buttonIndigoDark;
     ToggleButton toggleButtonDrawer;
     LinearLayout linearLayoutDrawerAccount, linearLayoutDrawerMain;
+    ImageView imageViewDrawerArrowUpDown;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,17 +102,19 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         getSupportActionBar().setHomeButtonEnabled(true);
         drawerToggle.syncState();
 
-        String urlPicture, urlCover;
-        urlPicture = "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfp1/v/t1.0-1/p200x200/1424388_10151792392315878_146499977_n.jpg?oh=1201b30a151e242bc39e67d6aba32b86&oe=554BD3DE&__gda__=1431136939_25c3b0c44d23dc6c5d9153757f08d3f2";
-        urlCover = "https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xpa1/v/t35.0-12/p180x540/1473382_10151795016155878_455139729_o.jpg?oh=d5b18d06dddbf883cae6eac7796f1716&oe=54E79A6C&__gda__=1424516730_6c8a8de7f91a2ea1b54948011a1145a7";
+        String urlPictureMain, urlCoverMain, urlPictureSecond;
+        urlPictureMain = "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfp1/v/t1.0-1/p200x200/1424388_10151792392315878_146499977_n.jpg?oh=1201b30a151e242bc39e67d6aba32b86&oe=554BD3DE&__gda__=1431136939_25c3b0c44d23dc6c5d9153757f08d3f2";
+        urlCoverMain = "https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xpa1/v/t35.0-12/p180x540/1473382_10151795016155878_455139729_o.jpg?oh=d5b18d06dddbf883cae6eac7796f1716&oe=54E79A6C&__gda__=1424516730_6c8a8de7f91a2ea1b54948011a1145a7";
+        urlPictureSecond = "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/v/t1.0-1/p320x320/10268475_617322955025149_5688820484112978497_n.png?oh=a2a775ba30e9fbdb54adad6b6f5cb58b&oe=55841FF5&__gda__=1435757385_769c223771a667e654d89b5723275b0c";
 
-        ImageView imageViewPicture, imageViewCover;
-        imageViewPicture = (ImageView) findViewById(R.id.imageViewPicture);
-        imageViewPicture.setBackgroundColor(getResources().getColor(android.R.color.transparent));
-        imageViewCover = (ImageView) findViewById(R.id.imageViewCover);
+        ImageView imageViewPictureMain, imageViewCoverMain, imageViewPictureSecond;
+        imageViewPictureMain = (ImageView) findViewById(R.id.imageViewPictureMain);
+        imageViewCoverMain = (ImageView) findViewById(R.id.imageViewCover);
+        imageViewPictureSecond = (ImageView) findViewById(R.id.imageViewPictureSecond);
 
-        Picasso.with(getApplicationContext()).load(urlPicture).transform(new CircleTransformWhite()).into(imageViewPicture);
-        Picasso.with(getApplicationContext()).load(urlCover).into(imageViewCover);
+        Picasso.with(getApplicationContext()).load(urlPictureMain).transform(new CircleTransformWhite()).into(imageViewPictureMain);
+        Picasso.with(getApplicationContext()).load(urlCoverMain).into(imageViewCoverMain);
+        Picasso.with(getApplicationContext()).load(urlPictureSecond).transform(new CircleTransformWhite()).into(imageViewPictureSecond);
 
         TypedValue typedValue = new TypedValue();
         MainActivity.this.getTheme().resolveAttribute(R.attr.colorPrimaryDark, typedValue, true);
@@ -157,12 +162,23 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             case R.id.toggleButtonDrawer:
                 linearLayoutDrawerAccount = (LinearLayout) findViewById(R.id.linearLayoutDrawerAccounts);
                 linearLayoutDrawerMain = (LinearLayout) findViewById(R.id.linearLayoutDrawerMain);
-                if (linearLayoutDrawerAccount.getVisibility() == View.VISIBLE){
+                imageViewDrawerArrowUpDown = (ImageView) findViewById(R.id.imageViewDrawerArrowUpDown);
+                if (linearLayoutDrawerAccount.getVisibility() == View.VISIBLE) {
                     linearLayoutDrawerAccount.setVisibility(View.GONE);
                     linearLayoutDrawerMain.setVisibility(View.VISIBLE);
-                }else {
+                    Animation animation = new RotateAnimation(0, -180, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                    animation.setFillAfter(true);
+                    animation.setDuration(500);
+                    imageViewDrawerArrowUpDown.startAnimation(animation);
+                    imageViewDrawerArrowUpDown.setBackgroundResource(R.drawable.ic_navigation_arrow_drop_up);
+                } else {
                     linearLayoutDrawerAccount.setVisibility(View.VISIBLE);
                     linearLayoutDrawerMain.setVisibility(View.GONE);
+                    Animation animation = new RotateAnimation(0, 180, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
+                    animation.setFillAfter(true);
+                    animation.setDuration(500);
+                    imageViewDrawerArrowUpDown.startAnimation(animation);
+                    imageViewDrawerArrowUpDown.setBackgroundResource(R.drawable.ic_navigation_arrow_drop_down);
                 }
                 break;
         }

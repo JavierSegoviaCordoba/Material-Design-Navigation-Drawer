@@ -12,5 +12,6 @@
     <string name="github">GitHub: github.com/dahnark</string>
     <string name="drawer_header_image">drawer header image</string>
     <string name="manage_account">Manage Accounts</string>
+    <string name="add_account">Add  account</string>
 
 </resources>

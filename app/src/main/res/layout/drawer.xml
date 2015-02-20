@@ -6,39 +6,48 @@
     android:background="?android:colorBackground"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/imageViewCover"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/header_height"
+            android:layout_height="@dimen/drawer_header_height"
             android:contentDescription="@string/drawer_header_image"
             android:scaleType="centerCrop"
             android:src="@drawable/header" />
 
         <FrameLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/header_height"
+            android:layout_height="@dimen/drawer_header_height"
             android:background="@color/md_black_1000_15" />
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/header_height"
-            android:clickable="true">
+            android:layout_height="@dimen/drawer_header_height">
+
+            <ImageView
+                android:id="@+id/imageViewDrawerArrowUpDown"
+                android:layout_width="@dimen/icon_size_24"
+                android:layout_height="@dimen/icon_size_24"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginBottom="@dimen/margin_padding_16"
+                android:layout_marginRight="@dimen/margin_padding_16"
+                android:background="@drawable/ic_navigation_arrow_drop_down" />
 
             <LinearLayout
                 android:id="@+id/linearLayoutHeaderTexts"
                 android:layout_width="wrap_content"
-                android:layout_height="56dp"
+                android:layout_height="@dimen/item_height_56"
                 android:layout_alignParentBottom="true"
                 android:layout_centerVertical="true"
                 android:layout_marginBottom="@dimen/margin_padding_8"
-                android:layout_marginEnd="@dimen/margin_padding_16_24"
-                android:layout_marginLeft="@dimen/margin_padding_16_24"
-                android:layout_marginRight="@dimen/margin_padding_16_24"
-                android:layout_marginStart="@dimen/margin_padding_16_24"
+                android:layout_marginEnd="@dimen/margin_padding_16"
+                android:layout_marginLeft="@dimen/margin_padding_16"
+                android:layout_marginRight="@dimen/margin_padding_16"
+                android:layout_marginStart="@dimen/margin_padding_16"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
 
@@ -50,6 +59,7 @@
                     android:text="Javier Segovia Córdoba"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/md_text_white" />
+
 
                 <TextView
                     android:id="@+id/textViewUsername"
@@ -66,25 +76,38 @@
                 android:id="@+id/toggleButtonDrawer"
                 style="?android:attr/borderlessButtonStyle"
                 android:layout_width="match_parent"
-                android:layout_height="172dp"
+                android:layout_height="@dimen/drawer_header_height"
                 android:background="?attr/selectableItemBackground"
                 android:checked="false"
                 android:textOff=""
                 android:textOn="" />
 
             <ImageView
-                android:id="@+id/imageViewPicture"
+                android:id="@+id/imageViewPictureSecond"
+                android:layout_width="@dimen/profile_picture_small_40"
+                android:layout_height="@dimen/profile_picture_small_40"
+                android:layout_alignParentRight="true"
+                android:layout_marginEnd="@dimen/margin_padding_16"
+                android:layout_marginLeft="@dimen/margin_padding_16"
+                android:layout_marginRight="@dimen/margin_padding_16"
+                android:layout_marginStart="@dimen/margin_padding_16"
+                android:layout_marginTop="@dimen/margin_padding_status_bar_16and25_41"
+                android:clickable="true"
+                android:scaleType="centerCrop" />
+
+            <ImageView
+                android:id="@+id/imageViewPictureMain"
                 android:layout_width="@dimen/profile_picture_64"
                 android:layout_height="@dimen/profile_picture_64"
-                android:layout_marginLeft="@dimen/margin_padding_16_24"
-                android:layout_marginStart="@dimen/margin_padding_16_24"
-                android:layout_marginTop="41dp"
-                android:background="@color/md_red_500"
+                android:layout_marginLeft="@dimen/margin_padding_16"
+                android:layout_marginStart="@dimen/margin_padding_16"
+                android:layout_marginTop="@dimen/margin_padding_status_bar_16and25_41"
+                android:clickable="true"
                 android:scaleType="centerCrop" />
 
         </RelativeLayout>
 
-    </RelativeLayout>
+    </FrameLayout>
 
     <!-- Content below drawer header -->
 
@@ -92,37 +115,97 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:animateLayoutChanges="true"
-        android:orientation="vertical"
-        android:visibility="visible">
+        android:orientation="vertical">
 
         <!-- Manage accounts items (GONE at start) -->
         <LinearLayout
             android:id="@+id/linearLayoutDrawerAccounts"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/margin_padding_48"
+            android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/margin_padding_8"
-            android:orientation="horizontal"
+            android:orientation="vertical"
             android:visibility="gone">
 
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:layout_gravity="center_vertical"
-                android:layout_marginLeft="@dimen/margin_padding_16_24"
-                android:layout_marginRight="16dp"
-                android:src="@drawable/ic_action_settings"
-                android:tint="?android:textColorSecondary" />
-
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_padding_16_24"
-                android:layout_marginTop="@dimen/margin_padding_16_24"
-                android:text="@string/manage_account"
-                android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
-                android:textColor="?android:textColorPrimary" />
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_padding_48"
+                    android:background="?selectableItemBackground"
+                    android:clickable="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_24"
+                        android:layout_height="@dimen/icon_size_24"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="@dimen/margin_padding_16"
+                        android:layout_marginLeft="@dimen/margin_padding_16"
+                        android:layout_marginRight="@dimen/margin_padding_16"
+                        android:layout_marginStart="@dimen/margin_padding_16"
+                        android:src="@drawable/ic_content_add"
+                        android:tint="?android:textColorSecondary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="@dimen/margin_padding_16"
+                        android:layout_marginLeft="@dimen/margin_padding_16"
+                        android:layout_marginRight="@dimen/margin_padding_16"
+                        android:layout_marginStart="@dimen/margin_padding_16"
+                        android:text="@string/add_account"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                        android:textColor="?android:textColorPrimary" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_padding_48"
+                    android:background="?selectableItemBackground"
+                    android:clickable="true"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="@dimen/icon_size_24"
+                        android:layout_height="@dimen/icon_size_24"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="@dimen/margin_padding_16"
+                        android:layout_marginLeft="@dimen/margin_padding_16"
+                        android:layout_marginRight="@dimen/margin_padding_16"
+                        android:layout_marginStart="@dimen/margin_padding_16"
+                        android:src="@drawable/ic_action_settings"
+                        android:tint="?android:textColorSecondary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:layout_marginEnd="@dimen/margin_padding_16"
+                        android:layout_marginLeft="@dimen/margin_padding_16"
+                        android:layout_marginRight="@dimen/margin_padding_16"
+                        android:layout_marginStart="@dimen/margin_padding_16"
+                        android:text="@string/manage_account"
+                        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+                        android:textColor="?android:textColorPrimary" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
         </LinearLayout>
+
 
     </LinearLayout>
 

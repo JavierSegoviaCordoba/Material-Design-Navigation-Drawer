@@ -1,25 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/margin_padding_48"
+    android:layout_height="wrap_content"
     android:orientation="horizontal">
 
-    <ImageView
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_gravity="center_vertical"
-        android:layout_marginLeft="@dimen/margin_padding_16_24"
-        android:layout_marginRight="16dp"
-        android:tint="?android:textColorSecondary"
-        android:src="@drawable/ic_action_account_circle" />
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/margin_padding_48"
+        android:background="?selectableItemBackground"
+        android:clickable="true"
+        android:orientation="horizontal">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_padding_16_24"
-        android:layout_marginTop="@dimen/margin_padding_16_24"
-        android:text="Your drawer content"
-        android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
-        android:textColor="?android:textColorPrimary"/>
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/margin_padding_16"
+            android:layout_marginLeft="@dimen/margin_padding_16_24"
+            android:layout_marginRight="@dimen/margin_padding_16"
+            android:layout_marginStart="@dimen/margin_padding_16"
+            android:src="@drawable/ic_action_account_circle"
+            android:tint="?android:textColorSecondary" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="@dimen/margin_padding_16"
+            android:layout_marginLeft="@dimen/margin_padding_16_24"
+            android:layout_marginRight="@dimen/margin_padding_16"
+            android:layout_marginStart="@dimen/margin_padding_16"
+            android:text="Your drawer content"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Body2"
+            android:textColor="?android:textColorPrimary" />
+
+    </LinearLayout>
 
 </LinearLayout>
