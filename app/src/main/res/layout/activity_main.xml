@@ -5,14 +5,35 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="@bool/fitsSystemWindows"
+    android:background="?android:colorBackground"
     tools:context=".MainActivity">
 
     <!-- The toolbar and main content view -->
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
+
+        <!-- Main content in this include, check content_main.xml -->
+        <include layout="@layout/content_main"/>
+
+        <FrameLayout
+            android:id="@+id/statusBar4000"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/status_bar_height"
+            android:background="@color/status_bar_inset"
+            android:translationZ="4dp" />
+
+        <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:layout_below="@+id/statusBar"
+            android:elevation="4dp"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
         <FrameLayout
             android:id="@+id/statusBar"
@@ -21,97 +42,7 @@
             android:background="?colorPrimaryDark"
             android:translationZ="4dp" />
 
-        <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            android:elevation="4dp"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-            app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-        <ScrollView
-            android:id="@+id/scrollView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scrollbars="vertical">
-
-            <LinearLayout
-                android:id="@+id/contentLayout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <!-- The main content view -->
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/margin_padding_16_24"
-                        android:padding="@dimen/margin_padding_16_24"
-                        android:text="Select app theme"
-                        android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                        android:textColor="?android:textColorPrimary" />
-
-                    <Button
-                        android:id="@+id/buttonRedLight"
-                        style="?android:borderlessButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/margin_padding_16_24"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:text="Red Light"
-                        android:textColor="@color/md_red_500" />
-
-                    <Button
-                        android:id="@+id/buttonIndigoLight"
-                        style="?android:borderlessButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/margin_padding_16_24"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:text="Indigo Light"
-                        android:textColor="@color/md_indigo_500" />
-
-                    <Button
-                        android:id="@+id/buttonRedDark"
-                        style="?android:borderlessButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/margin_padding_16_24"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:text="Red Dark"
-                        android:textColor="@color/md_red_500" />
-
-                    <Button
-                        android:id="@+id/buttonIndigoDark"
-                        style="?android:borderlessButtonStyle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="@dimen/margin_padding_16_24"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:text="Indigo Dark"
-                        android:textColor="@color/md_indigo_500" />
-
-                </LinearLayout>
-
-                <Space
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/navigation_bar_and_padding_64" />
-            </LinearLayout>
-        </ScrollView>
-
-    </LinearLayout>
+    </RelativeLayout>
 
     <!-- The navigation drawer -->
 

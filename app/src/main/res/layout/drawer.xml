@@ -16,12 +16,12 @@
             android:layout_height="@dimen/drawer_header_height"
             android:contentDescription="@string/drawer_header_image"
             android:scaleType="centerCrop"
-            android:src="@drawable/header" />
+            android:src="@color/md_indigo_500" />
 
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/drawer_header_height"
-            android:background="@color/md_black_1000_15" />
+            android:background="@color/md_black_1000_20" />
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -32,21 +32,23 @@
                 android:layout_width="@dimen/icon_size_24"
                 android:layout_height="@dimen/icon_size_24"
                 android:layout_alignParentBottom="true"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginBottom="@dimen/margin_padding_16"
+                android:layout_marginEnd="@dimen/margin_padding_16"
                 android:layout_marginRight="@dimen/margin_padding_16"
                 android:background="@drawable/ic_navigation_arrow_drop_down" />
 
             <LinearLayout
                 android:id="@+id/linearLayoutHeaderTexts"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/item_height_56"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/item_height_avatar_single_line_56_64"
                 android:layout_alignParentBottom="true"
                 android:layout_centerVertical="true"
                 android:layout_marginBottom="@dimen/margin_padding_8"
-                android:layout_marginEnd="@dimen/margin_padding_16"
+                android:layout_marginEnd="@dimen/margin_padding_40"
                 android:layout_marginLeft="@dimen/margin_padding_16"
-                android:layout_marginRight="@dimen/margin_padding_16"
+                android:layout_marginRight="@dimen/margin_padding_40"
                 android:layout_marginStart="@dimen/margin_padding_16"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
@@ -56,7 +58,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:text="Javier Segovia Córdoba"
+                    android:text="@string/name"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body2"
                     android:textColor="@color/md_text_white" />
 
@@ -66,7 +68,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:singleLine="true"
-                    android:text="thedahnark@gmail.com"
+                    android:text="@string/email"
                     android:textAppearance="@style/TextAppearance.AppCompat.Body1"
                     android:textColor="@color/md_secondary_text_icons_white" />
 
@@ -87,23 +89,26 @@
                 android:layout_width="@dimen/profile_picture_small_40"
                 android:layout_height="@dimen/profile_picture_small_40"
                 android:layout_alignParentRight="true"
+                android:layout_alignTop="@+id/imageViewPictureMain"
                 android:layout_marginEnd="@dimen/margin_padding_16"
                 android:layout_marginLeft="@dimen/margin_padding_16"
                 android:layout_marginRight="@dimen/margin_padding_16"
                 android:layout_marginStart="@dimen/margin_padding_16"
-                android:layout_marginTop="@dimen/margin_padding_status_bar_16and25_41"
                 android:clickable="true"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                android:src="@color/md_red_500"/>
 
             <ImageView
                 android:id="@+id/imageViewPictureMain"
                 android:layout_width="@dimen/profile_picture_64"
                 android:layout_height="@dimen/profile_picture_64"
+                android:layout_above="@+id/linearLayoutHeaderTexts"
+                android:layout_marginBottom="@dimen/margin_padding_4"
                 android:layout_marginLeft="@dimen/margin_padding_16"
                 android:layout_marginStart="@dimen/margin_padding_16"
-                android:layout_marginTop="@dimen/margin_padding_status_bar_16and25_41"
                 android:clickable="true"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                android:src="@color/md_red_500"/>
 
         </RelativeLayout>
 
@@ -205,7 +210,6 @@
             </LinearLayout>
 
         </LinearLayout>
-
 
     </LinearLayout>
 

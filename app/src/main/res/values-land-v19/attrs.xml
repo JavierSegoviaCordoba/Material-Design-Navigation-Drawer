@@ -17,10 +17,10 @@
     <dimen name="margin_padding_16_24">16dp</dimen>
     <dimen name="icon_size_24">24dp</dimen>
     <dimen name="profile_picture_small_40">40dp</dimen>
-    <dimen name="margin_padding_status_bar_16and25_41">41dp</dimen>
+    <dimen name="margin_padding_toolbar_status_bar_8andtoolbarand25">81dp</dimen>
     <dimen name="margin_padding_48">48dp</dimen>
-    <dimen name="item_height_48">48dp</dimen>
-    <dimen name="item_height_56">56dp</dimen>
+    <dimen name="item_height_single_line_48_56">48dp</dimen>
+    <dimen name="item_height_avatar_single_line_56_64">56dp</dimen>
     <dimen name="margin_padding_56_64">56dp</dimen>
     <dimen name="profile_picture_64">64dp</dimen>
     <dimen name="margin_padding_72">72dp</dimen>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <bool name="fitsSystemWindows">false</bool>
+    <bool name="translucentStatusBar">true</bool>
+    <bool name="translucentNavigationBar">true</bool>
+    <dimen name="status_bar_height">25dp</dimen>
+    <color name="status_bar_inset">#0000</color>
+    <dimen name="navigation_bar_and_padding_64">64dp</dimen>
+    <dimen name="drawer_margin">0dp</dimen>
+
+    <style name="drawer_width">
+        <item name="android:layout_width">320dp</item>
+    </style>
+
+    <dimen name="margin_padding_8">8dp</dimen>
+    <dimen name="margin_padding_16">16dp</dimen>
+    <dimen name="margin_padding_16_24">16dp</dimen>
+    <dimen name="icon_size_24">24dp</dimen>
+    <dimen name="profile_picture_small_40">40dp</dimen>
+    <dimen name="margin_padding_toolbar_status_bar_8andtoolbarand25">97dp</dimen>
+    <dimen name="margin_padding_48">48dp</dimen>
+    <dimen name="item_height_single_line_48_56">56dp</dimen>
+    <dimen name="item_height_avatar_single_line_56_64">64dp</dimen>
+    <dimen name="item_height_two_lines_72_80">80dp</dimen>
+    <dimen name="item_height_avatar_two_lines_72_80">80dp</dimen>
+    <dimen name="item_height_three_lines_88_96">96dp</dimen>
+    <dimen name="item_height_avatar_three_lines_88_96">96dp</dimen>
+    <dimen name="margin_padding_56_64">64dp</dimen>
+    <dimen name="profile_picture_64">64dp</dimen>
+    <dimen name="margin_padding_72">72dp</dimen>
+    <dimen name="margin_padding_72_80">80dp</dimen>
+    <dimen name="drawer_header_height">180dp</dimen>
+</resources>

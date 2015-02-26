@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:overScrollMode="always"
+    android:scrollbarStyle="insideOverlay"
+    android:scrollbars="vertical"
+    android:paddingTop="@dimen/margin_padding_toolbar_status_bar_8andtoolbarand25">
+
+    <LinearLayout
+        android:id="@+id/linearLayoutContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- The main content view -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/item_height_single_line_48_56"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:text="Select app theme"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textColor="?android:textColorPrimary" />
+
+            <Button
+                android:id="@+id/buttonRedLight"
+                style="?android:borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/item_height_single_line_48_56"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_padding_16_24"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:text="Red Light"
+                android:textColor="@color/md_red_500" />
+
+            <Button
+                android:id="@+id/buttonIndigoLight"
+                style="?android:borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/item_height_single_line_48_56"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_padding_16_24"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:text="Indigo Light"
+                android:textColor="@color/md_indigo_500" />
+
+            <Button
+                android:id="@+id/buttonRedDark"
+                style="?android:borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/item_height_single_line_48_56"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_padding_16_24"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:text="Red Dark"
+                android:textColor="@color/md_red_500" />
+
+            <Button
+                android:id="@+id/buttonIndigoDark"
+                style="?android:borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/item_height_single_line_48_56"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_padding_16_24"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:text="Indigo Dark"
+                android:textColor="@color/md_indigo_500" />
+
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/navigation_bar_and_padding_64" />
+    </LinearLayout>
+</ScrollView>

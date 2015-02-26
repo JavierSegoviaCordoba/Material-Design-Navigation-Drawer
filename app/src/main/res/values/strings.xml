@@ -13,5 +13,7 @@
     <string name="drawer_header_image">drawer header image</string>
     <string name="manage_account">Manage Accounts</string>
     <string name="add_account">Add  account</string>
+    <string name="name">Javier Segovia Córdoba</string>
+    <string name="email">thedahnark@gmail.com</string>
 
 </resources>

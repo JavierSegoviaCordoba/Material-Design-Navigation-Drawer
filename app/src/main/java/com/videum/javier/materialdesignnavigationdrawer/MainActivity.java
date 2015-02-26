@@ -14,12 +14,13 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ToggleButton;
 
 import com.squareup.picasso.Picasso;
-import com.videum.javier.materialdesignnavigationdrawer.Utils.CircleTransformWhite;
+import com.videum.javier.materialdesignnavigationdrawer.Utils.CircleTransform;
 
 
 public class MainActivity extends ActionBarActivity implements View.OnClickListener {
@@ -30,6 +31,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     SharedPreferences sharedPreferences;
     Button buttonRedLight, buttonRedDark, buttonIndigoLight, buttonIndigoDark;
     ToggleButton toggleButtonDrawer;
+    FrameLayout statusBar;
     LinearLayout linearLayoutDrawerAccount, linearLayoutDrawerMain;
     ImageView imageViewDrawerArrowUpDown;
 
@@ -39,16 +41,18 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Setup toolbar
+        // Setup toolbar and statusBar (really FrameLayout)
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Navigation Drawer App");
+        statusBar = (FrameLayout) findViewById(R.id.statusBar);
 
+        // Setup navigation drawr
         setupNavigationDrawer();
 
+        // Setup buttons to change theme app
         setupButtons();
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -103,18 +107,18 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         drawerToggle.syncState();
 
         String urlPictureMain, urlCoverMain, urlPictureSecond;
-        urlPictureMain = "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xfp1/v/t1.0-1/p200x200/1424388_10151792392315878_146499977_n.jpg?oh=1201b30a151e242bc39e67d6aba32b86&oe=554BD3DE&__gda__=1431136939_25c3b0c44d23dc6c5d9153757f08d3f2";
-        urlCoverMain = "https://fbcdn-sphotos-h-a.akamaihd.net/hphotos-ak-xpa1/v/t35.0-12/p180x540/1473382_10151795016155878_455139729_o.jpg?oh=d5b18d06dddbf883cae6eac7796f1716&oe=54E79A6C&__gda__=1424516730_6c8a8de7f91a2ea1b54948011a1145a7";
-        urlPictureSecond = "https://fbcdn-profile-a.akamaihd.net/hprofile-ak-xaf1/v/t1.0-1/p320x320/10268475_617322955025149_5688820484112978497_n.png?oh=a2a775ba30e9fbdb54adad6b6f5cb58b&oe=55841FF5&__gda__=1435757385_769c223771a667e654d89b5723275b0c";
+        urlPictureMain = "https://lh4.googleusercontent.com/-LEwBpvgLyOM/AAAAAAAAAAI/AAAAAAAAHJM/CbQbbI7w1Bc/s120-c/photo.jpg";
+        urlCoverMain = "https://lh6.googleusercontent.com/-fHOV1IEH9D8/Uo6H1_3Yl3I/AAAAAAAASa8/kfbkrAcRjxY/s921-fcrop64=1,21e946bee045d727/20130810_202949.jpg";
+        urlPictureSecond = "https://lh3.googleusercontent.com/-zt_CULx5S7A/U123y1WL3qI/AAAAAAAAAUM/vOd7BJOaUB0/s865-no/f51c268a-715a-462d-9035-9ac79c74d0ed";
 
         ImageView imageViewPictureMain, imageViewCoverMain, imageViewPictureSecond;
         imageViewPictureMain = (ImageView) findViewById(R.id.imageViewPictureMain);
         imageViewCoverMain = (ImageView) findViewById(R.id.imageViewCover);
         imageViewPictureSecond = (ImageView) findViewById(R.id.imageViewPictureSecond);
 
-        Picasso.with(getApplicationContext()).load(urlPictureMain).transform(new CircleTransformWhite()).into(imageViewPictureMain);
+        Picasso.with(getApplicationContext()).load(urlPictureMain).transform(new CircleTransform()).into(imageViewPictureMain);
         Picasso.with(getApplicationContext()).load(urlCoverMain).into(imageViewCoverMain);
-        Picasso.with(getApplicationContext()).load(urlPictureSecond).transform(new CircleTransformWhite()).into(imageViewPictureSecond);
+        Picasso.with(getApplicationContext()).load(urlPictureSecond).transform(new CircleTransform()).into(imageViewPictureSecond);
 
         TypedValue typedValue = new TypedValue();
         MainActivity.this.getTheme().resolveAttribute(R.attr.colorPrimaryDark, typedValue, true);
