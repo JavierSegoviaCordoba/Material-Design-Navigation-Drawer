@@ -5,14 +5,15 @@
     android:layout_height="match_parent"
     android:overScrollMode="always"
     android:scrollbarStyle="insideOverlay"
-    android:scrollbars="vertical"
-    android:paddingTop="@dimen/margin_padding_toolbar_status_bar_8andtoolbarand25">
+    android:scrollbars="vertical">
 
     <LinearLayout
         android:id="@+id/linearLayoutContent"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/margin_padding_toolbar_status_bar_8andtoolbarand25">
 
         <!-- The main content view -->
 
