@@ -94,7 +94,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public void setupTheme() {
 
         sharedPreferences = getSharedPreferences("VALUES", MODE_PRIVATE);
-        switch (sharedPreferences.getString("THEME", "REDLIGHT")) {
+        switch (sharedPreferences.getString("THEME", "INDIGOLIGHT")) {
             case "REDLIGHT":
                 setTheme(R.style.AppThemeRedLight);
                 break;
@@ -124,8 +124,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         String urlPictureMain, urlCoverMain, urlPictureSecond;
         urlPictureMain = "https://lh4.googleusercontent.com/-LEwBpvgLyOM/AAAAAAAAAAI/AAAAAAAAHJM/CbQbbI7w1Bc/s120-c/photo.jpg";
-        urlCoverMain = "https://lh6.googleusercontent.com/-fHOV1IEH9D8/Uo6H1_3Yl3I/AAAAAAAASa8/kfbkrAcRjxY/s921-fcrop64=1,21e946bee045d727/20130810_202949.jpg";
-        urlPictureSecond = "https://lh3.googleusercontent.com/-zt_CULx5S7A/U123y1WL3qI/AAAAAAAAAUM/vOd7BJOaUB0/s865-no/f51c268a-715a-462d-9035-9ac79c74d0ed";
+        urlCoverMain = "https://lh6.googleusercontent.com/-2RQc20WjV-8/VRIFuAiNzbI/AAAAAAAAArk/dEZZEWJqkUs/w1474-h829-no/cover-no-words.png";
+        urlPictureSecond = "https://lh3.googleusercontent.com/-fIIhUhsMF3k/AAAAAAAAAAI/AAAAAAAAAp4/RPUESUibS6U/s120-c/photo.jpg";
 
         ImageView imageViewPictureMain, imageViewCoverMain, imageViewPictureSecond;
         imageViewPictureMain = (ImageView) findViewById(R.id.imageViewPictureMain);
