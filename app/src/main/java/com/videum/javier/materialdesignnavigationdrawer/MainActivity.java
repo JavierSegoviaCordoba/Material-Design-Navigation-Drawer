@@ -65,7 +65,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         // Setup buttons to change theme app
         setupButtons();
 
-        hideNavigationDrawerSettingAndFeedbackOnScroll();
+        // Hide Settings and Feedback buttons when navigation drawer is scrolled
+        hideNavigationDrawerSettingsAndFeedbackOnScroll();
 
     }
 
@@ -158,7 +159,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
     }
 
-    private void hideNavigationDrawerSettingAndFeedbackOnScroll() {
+    private void hideNavigationDrawerSettingsAndFeedbackOnScroll() {
 
         scrollViewNavigationDrawerContent = (ScrollView) findViewById(R.id.scrollViewNavigationDrawerContent);
         linearLayoutScrollViewChild = (LinearLayout) findViewById(R.id.linearLayoutScrollViewChild);
