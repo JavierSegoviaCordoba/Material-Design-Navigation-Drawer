@@ -75,6 +75,17 @@
                 android:text="Indigo Dark"
                 android:textColor="@color/md_indigo_500" />
 
+            <Button
+                android:id="@+id/button"
+                style="?android:borderlessButtonStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/item_height_single_line_48_56"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/margin_padding_16_24"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:text="Check postn"
+                android:textColor="@color/md_orange_500" />
+
         </LinearLayout>
 
         <Space

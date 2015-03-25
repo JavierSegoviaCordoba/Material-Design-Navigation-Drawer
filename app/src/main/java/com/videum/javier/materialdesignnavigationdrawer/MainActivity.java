@@ -2,25 +2,27 @@ package com.videum.javier.materialdesignnavigationdrawer;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.Toolbar;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.view.animation.AccelerateInterpolator;
 import android.view.animation.Animation;
+import android.view.animation.DecelerateInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.ToggleButton;
 
 import com.squareup.picasso.Picasso;
@@ -35,12 +37,18 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     SharedPreferences sharedPreferences;
     Button buttonRedLight, buttonRedDark, buttonIndigoLight, buttonIndigoDark;
     ToggleButton toggleButtonDrawer;
-    FrameLayout statusBar;
-    LinearLayout linearLayoutDrawerAccount, linearLayoutDrawerMain;
+    FrameLayout statusBar, frameLayoutSetting1, frameLayoutSetting2;
+    LinearLayout linearLayoutDrawerAccount, linearLayoutDrawerMain, linearLayoutScrollViewChild;
     ImageView imageViewDrawerArrowUpDown;
+    ScrollView scrollViewNavigationDrawerContent;
+    ViewTreeObserver viewTreeObserverNavigationDrawerScrollView;
+    ViewTreeObserver.OnScrollChangedListener onScrollChangedListener;
+
+    float drawerHeight, scrollViewHeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         setupTheme();
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -48,14 +56,17 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         // Setup toolbar and statusBar (really FrameLayout)
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Navigation Drawer App");
+        getSupportActionBar().setTitle("Material Navigation Drawer");
         statusBar = (FrameLayout) findViewById(R.id.statusBar);
 
-        // Setup navigation drawr
+        // Setup navigation drawer
         setupNavigationDrawer();
 
         // Setup buttons to change theme app
         setupButtons();
+
+        hideNavigationDrawerSettingAndFeedbackOnScroll();
+
     }
 
     @Override
@@ -81,6 +92,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     public void setupTheme() {
+
         sharedPreferences = getSharedPreferences("VALUES", MODE_PRIVATE);
         switch (sharedPreferences.getString("THEME", "REDLIGHT")) {
             case "REDLIGHT":
@@ -134,6 +146,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     }
 
     public void setupButtons() {
+
         buttonRedLight = (Button) findViewById(R.id.buttonRedLight);
         buttonRedLight.setOnClickListener(this);
         buttonRedDark = (Button) findViewById(R.id.buttonRedDark);
@@ -142,11 +155,95 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         buttonIndigoLight.setOnClickListener(this);
         buttonIndigoDark = (Button) findViewById(R.id.buttonIndigoDark);
         buttonIndigoDark.setOnClickListener(this);
+
+    }
+
+    private void hideNavigationDrawerSettingAndFeedbackOnScroll() {
+
+        scrollViewNavigationDrawerContent = (ScrollView) findViewById(R.id.scrollViewNavigationDrawerContent);
+        linearLayoutScrollViewChild = (LinearLayout) findViewById(R.id.linearLayoutScrollViewChild);
+        frameLayoutSetting1 = (FrameLayout) findViewById(R.id.frameLayoutSettings1);
+        frameLayoutSetting2 = (FrameLayout) findViewById(R.id.frameLayoutSettings2);
+
+        viewTreeObserverNavigationDrawerScrollView = linearLayoutScrollViewChild.getViewTreeObserver();
+
+        if (viewTreeObserverNavigationDrawerScrollView.isAlive()) {
+            viewTreeObserverNavigationDrawerScrollView.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
+                @Override
+                public void onGlobalLayout() {
+
+                    if (Build.VERSION.SDK_INT > 16) {
+                        linearLayoutScrollViewChild.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                    } else {
+                        linearLayoutScrollViewChild.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+                    }
+
+                    drawerHeight = linearLayoutScrollViewChild.getHeight();
+                    scrollViewHeight = scrollViewNavigationDrawerContent.getHeight();
+
+                    if (drawerHeight > scrollViewHeight) {
+                        frameLayoutSetting1.setVisibility(View.VISIBLE);
+                        frameLayoutSetting2.setVisibility(View.VISIBLE);
+                    }
+
+                    if (drawerHeight < scrollViewHeight) {
+                        frameLayoutSetting1.setVisibility(View.GONE);
+                        frameLayoutSetting2.setVisibility(View.VISIBLE);
+                    }
+                }
+            });
+        }
+
+        onScrollChangedListener = new ViewTreeObserver.OnScrollChangedListener() {
+            @Override
+            public void onScrollChanged() {
+
+                scrollViewNavigationDrawerContent.setOnTouchListener(new View.OnTouchListener() {
+                    @Override
+                    public boolean onTouch(View v, MotionEvent event) {
+
+                        switch (event.getAction()) {
+                            case MotionEvent.ACTION_MOVE:
+                                if (scrollViewNavigationDrawerContent.getScrollY() != 0) {
+                                    frameLayoutSetting1.animate().translationY(frameLayoutSetting1
+                                            .getHeight()).setInterpolator(new AccelerateInterpolator(5f)).setDuration(400);
+                                }
+                                break;
+                        }
+                        return false;
+                    }
+                });
+
+                if (scrollViewNavigationDrawerContent.getScrollY() == 0) {
+                    frameLayoutSetting1.animate().translationY(0)
+                            .setInterpolator(new DecelerateInterpolator(5f)).setDuration(600);
+                }
+
+            }
+        };
+
+        scrollViewNavigationDrawerContent.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_MOVE:
+                        ViewTreeObserver observer;
+                        observer = scrollViewNavigationDrawerContent.getViewTreeObserver();
+                        observer.addOnScrollChangedListener(onScrollChangedListener);
+                        break;
+                }
+
+                return false;
+            }
+        });
+
     }
 
     // All onClick for all views
     @Override
     public void onClick(View v) {
+
         sharedPreferences = getSharedPreferences("VALUES", MODE_PRIVATE);
         Intent intent = new Intent(MainActivity.this, MainActivity.class);
 

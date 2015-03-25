@@ -67,7 +67,7 @@
 
             <!-- Your drawer content -->
 
-            <include layout="@layout/drawer" />
+            <include layout="@layout/drawer"/>
 
         </LinearLayout>
 
