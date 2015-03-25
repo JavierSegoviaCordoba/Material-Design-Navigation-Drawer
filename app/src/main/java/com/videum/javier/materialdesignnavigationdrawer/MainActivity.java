@@ -65,9 +65,6 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
         // Setup buttons to change theme app
         setupButtons();
 
-        // Hide Settings and Feedback buttons when navigation drawer is scrolled
-        hideNavigationDrawerSettingsAndFeedbackOnScroll();
-
     }
 
     @Override
@@ -95,7 +92,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     public void setupTheme() {
 
         sharedPreferences = getSharedPreferences("VALUES", MODE_PRIVATE);
-        switch (sharedPreferences.getString("THEME", "INDIGOLIGHT")) {
+        switch (sharedPreferences.getString("THEME", "REDLIGHT")) {
             case "REDLIGHT":
                 setTheme(R.style.AppThemeRedLight);
                 break;
@@ -144,6 +141,9 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
 
         toggleButtonDrawer = (ToggleButton) findViewById(R.id.toggleButtonDrawer);
         toggleButtonDrawer.setOnClickListener(this);
+
+        // Hide Settings and Feedback buttons when navigation drawer is scrolled
+        hideNavigationDrawerSettingsAndFeedbackOnScroll();
     }
 
     public void setupButtons() {
@@ -269,6 +269,8 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 linearLayoutDrawerAccount = (LinearLayout) findViewById(R.id.linearLayoutDrawerAccounts);
                 linearLayoutDrawerMain = (LinearLayout) findViewById(R.id.linearLayoutDrawerMain);
                 imageViewDrawerArrowUpDown = (ImageView) findViewById(R.id.imageViewDrawerArrowUpDown);
+                frameLayoutSetting1 = (FrameLayout) findViewById(R.id.frameLayoutSettings1);
+                frameLayoutSetting2 = (FrameLayout) findViewById(R.id.frameLayoutSettings2);
                 if (linearLayoutDrawerAccount.getVisibility() == View.VISIBLE) {
                     linearLayoutDrawerAccount.setVisibility(View.GONE);
                     linearLayoutDrawerMain.setVisibility(View.VISIBLE);
@@ -285,6 +287,11 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                     animation.setDuration(500);
                     imageViewDrawerArrowUpDown.startAnimation(animation);
                     imageViewDrawerArrowUpDown.setBackgroundResource(R.drawable.ic_navigation_arrow_drop_down);
+                }
+                if (frameLayoutSetting1.getVisibility() == View.VISIBLE){
+                    frameLayoutSetting1.setVisibility(View.GONE);
+                } else {
+                    hideNavigationDrawerSettingsAndFeedbackOnScroll();
                 }
                 break;
         }
