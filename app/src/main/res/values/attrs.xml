@@ -8,6 +8,7 @@
     <dimen name="status_bar_height">0dp</dimen>
     <color name="status_bar_inset">#0000</color>
     <dimen name="navigation_bar_and_padding_64">64dp</dimen>
+    <dimen name="navigation_bar_height">48dp</dimen>
     <dimen name="drawer_margin">56dp</dimen>
 
     <style name="drawer_width">

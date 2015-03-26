@@ -5,7 +5,6 @@
     <bool name="translucentNavigationBar">true</bool>
     <dimen name="status_bar_height">25dp</dimen>
     <color name="status_bar_inset">#0000</color>
-    <dimen name="navigation_bar_and_padding_64">64dp</dimen>
     <dimen name="drawer_margin">56dp</dimen>
 
     <style name="drawer_width">

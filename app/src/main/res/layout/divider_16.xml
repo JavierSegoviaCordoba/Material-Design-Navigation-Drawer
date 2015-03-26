@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginBottom="@dimen/margin_padding_8"
+    android:layout_marginTop="@dimen/margin_padding_8"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:id="@+id/frameLayoutDrawerItemDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginBottom="@dimen/margin_padding_8"
+        android:layout_marginTop="7dp"
+        android:background="?android:cacheColorHint"
+        android:clickable="false"
+        android:visibility="visible" />
+
+</LinearLayout>
