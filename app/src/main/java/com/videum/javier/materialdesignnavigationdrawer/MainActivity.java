@@ -62,7 +62,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
     ItemClickSupport itemClickSupport1, itemClickSupport2, itemClickSupport3, itemClickSupportSettings;
     TypedValue typedValueColorPrimary, typedValueTextColorPrimary, typedValueTextColorControlHighlight, typedValueColorBackground;
     int colorPrimary, textColorPrimary, colorControlHighlight, colorBackground;
-    int recyclerViewHeight = 0;
+    int recyclerViewHeight;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
