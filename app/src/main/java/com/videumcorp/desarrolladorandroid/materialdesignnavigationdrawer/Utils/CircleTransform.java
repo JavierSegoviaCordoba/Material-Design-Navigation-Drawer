@@ -1,4 +1,4 @@
-package com.videum.javier.materialdesignnavigationdrawer.Utils;
+package com.videumcorp.desarrolladorandroid.materialdesignnavigationdrawer.Utils;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;

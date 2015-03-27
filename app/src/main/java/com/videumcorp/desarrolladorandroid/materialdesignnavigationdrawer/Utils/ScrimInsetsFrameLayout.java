@@ -1,4 +1,4 @@
-package com.videum.javier.materialdesignnavigationdrawer.Utils;
+package com.videumcorp.desarrolladorandroid.materialdesignnavigationdrawer.Utils;
 
 /* Copyright 2014 Google Inc.
  *
@@ -24,7 +24,7 @@ import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.widget.FrameLayout;
 
-import com.videum.javier.materialdesignnavigationdrawer.R;
+import com.videumcorp.desarrolladorandroid.materialdesignnavigationdrawer.R;
 
 /**
  * A layout that draws something in the insets passed to {@link #fitSystemWindows(android.graphics.Rect)}, i.e. the area above UI chrome

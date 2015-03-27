@@ -1,4 +1,4 @@
-package com.videum.javier.materialdesignnavigationdrawer.RecyclerView.Utils;
+package com.videumcorp.desarrolladorandroid.materialdesignnavigationdrawer.RecyclerView.Utils;
 
 import android.annotation.TargetApi;
 import android.os.Build;
@@ -12,8 +12,7 @@ import android.util.SparseBooleanArray;
 import android.view.View;
 import android.widget.Checkable;
 
-
-import com.videum.javier.materialdesignnavigationdrawer.R;
+import com.videumcorp.desarrolladorandroid.materialdesignnavigationdrawer.R;
 
 import static android.os.Build.VERSION_CODES.HONEYCOMB;
 

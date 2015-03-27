@@ -46,7 +46,7 @@
 
     <!-- The navigation drawer -->
 
-    <com.videum.javier.materialdesignnavigationdrawer.Utils.ScrimInsetsFrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+    <com.videumcorp.desarrolladorandroid.materialdesignnavigationdrawer.Utils.ScrimInsetsFrameLayout xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/scrimInsetsFrameLayout"
         style="@style/drawer_width"
         android:layout_height="match_parent"
@@ -71,5 +71,5 @@
 
         </LinearLayout>
 
-    </com.videum.javier.materialdesignnavigationdrawer.Utils.ScrimInsetsFrameLayout>
+    </com.videumcorp.desarrolladorandroid.materialdesignnavigationdrawer.Utils.ScrimInsetsFrameLayout>
 </android.support.v4.widget.DrawerLayout>

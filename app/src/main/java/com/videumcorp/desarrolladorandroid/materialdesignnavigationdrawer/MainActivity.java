@@ -1,4 +1,4 @@
-package com.videum.javier.materialdesignnavigationdrawer;
+package com.videumcorp.desarrolladorandroid.materialdesignnavigationdrawer;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -31,10 +31,10 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.squareup.picasso.Picasso;
-import com.videum.javier.materialdesignnavigationdrawer.RecyclerView.Adapters.DrawerAdapter;
-import com.videum.javier.materialdesignnavigationdrawer.RecyclerView.Classes.DrawerItem;
-import com.videum.javier.materialdesignnavigationdrawer.RecyclerView.Utils.ItemClickSupport;
-import com.videum.javier.materialdesignnavigationdrawer.Utils.CircleTransform;
+import com.videumcorp.desarrolladorandroid.materialdesignnavigationdrawer.RecyclerView.Adapters.DrawerAdapter;
+import com.videumcorp.desarrolladorandroid.materialdesignnavigationdrawer.RecyclerView.Classes.DrawerItem;
+import com.videumcorp.desarrolladorandroid.materialdesignnavigationdrawer.RecyclerView.Utils.ItemClickSupport;
+import com.videumcorp.desarrolladorandroid.materialdesignnavigationdrawer.Utils.CircleTransform;
 
 import java.util.ArrayList;
 

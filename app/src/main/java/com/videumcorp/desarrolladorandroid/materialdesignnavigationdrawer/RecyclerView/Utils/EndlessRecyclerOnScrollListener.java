@@ -1,4 +1,4 @@
-package com.videum.javier.materialdesignnavigationdrawer.RecyclerView.Utils;
+package com.videumcorp.desarrolladorandroid.materialdesignnavigationdrawer.RecyclerView.Utils;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;

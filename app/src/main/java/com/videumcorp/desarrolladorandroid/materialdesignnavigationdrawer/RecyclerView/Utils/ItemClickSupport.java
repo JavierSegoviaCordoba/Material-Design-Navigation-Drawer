@@ -1,11 +1,11 @@
-package com.videum.javier.materialdesignnavigationdrawer.RecyclerView.Utils;
+package com.videumcorp.desarrolladorandroid.materialdesignnavigationdrawer.RecyclerView.Utils;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.HapticFeedbackConstants;
 import android.view.SoundEffectConstants;
 import android.view.View;
 
-import com.videum.javier.materialdesignnavigationdrawer.R;
+import com.videumcorp.desarrolladorandroid.materialdesignnavigationdrawer.R;
 
 
 public class ItemClickSupport {

@@ -1,4 +1,4 @@
-package com.videum.javier.materialdesignnavigationdrawer.RecyclerView.Utils;
+package com.videumcorp.desarrolladorandroid.materialdesignnavigationdrawer.RecyclerView.Utils;
 
 import android.content.Context;
 import android.os.Build;
