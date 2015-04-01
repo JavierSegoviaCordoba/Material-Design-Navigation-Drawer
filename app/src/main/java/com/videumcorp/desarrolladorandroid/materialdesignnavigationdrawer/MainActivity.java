@@ -235,6 +235,13 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                                             .getHeight()).setInterpolator(new AccelerateInterpolator(5f)).setDuration(400);
                                 }
                                 break;
+
+                            case MotionEvent.ACTION_UP:
+                                if (scrollViewNavigationDrawerContent.getScrollY() != 0) {
+                                    frameLayoutSetting1.animate().translationY(frameLayoutSetting1
+                                            .getHeight()).setInterpolator(new AccelerateInterpolator(5f)).setDuration(400);
+                                }
+                                break;
                         }
                         return false;
                     }
@@ -251,9 +258,14 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
+                ViewTreeObserver observer;
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_MOVE:
-                        ViewTreeObserver observer;
+                        observer = scrollViewNavigationDrawerContent.getViewTreeObserver();
+                        observer.addOnScrollChangedListener(onScrollChangedListener);
+                        break;
+
+                    case MotionEvent.ACTION_UP:
                         observer = scrollViewNavigationDrawerContent.getViewTreeObserver();
                         observer.addOnScrollChangedListener(onScrollChangedListener);
                         break;
@@ -438,7 +450,7 @@ public class MainActivity extends ActionBarActivity implements View.OnClickListe
                 }
                 textViewHelpTitle.setTextColor(textColorPrimary);
             }
-        }, 100);
+        }, 250);
 
         itemClickSupport1 = ItemClickSupport.addTo(recyclerViewDrawer1);
         itemClickSupport1.setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {

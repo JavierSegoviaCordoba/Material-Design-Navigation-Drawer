@@ -332,6 +332,7 @@
         android:layout_alignParentBottom="true"
         android:background="?android:colorBackground"
         android:elevation="6dp"
+        android:translationZ="6dp"
         android:visibility="visible">
 
         <LinearLayout
