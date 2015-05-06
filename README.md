@@ -8,7 +8,8 @@ Features:
   - Navigation drawer over status bar (Lollipop and Kitkat)
   - Translucent navigation bar (Lollipop and Kitkat)
   - Translucent status bar (Kitkat, gradient)
-  - It Works perfectly for 4.1+ (portrait and landscape mode). 
+  - It works perfectly for 4.1+ (portrait and landscape mode).
+  - It works perfectly in any device (smartphone or tablet).
   
 <a href="https://play.google.com/store/apps/details?id=com.videumcorp.desarrolladorandroid.materialdesignnavigationdrawer">
   <img alt="Get it on Google Play"
