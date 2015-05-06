@@ -1,5 +1,8 @@
 Material Design Navigation Drawer. 
 
+*Take care, the name of the folders that contain this project should haven't spaces,
+ in my computers I had rendering problems in the preview window caused by this.
+
 Features:
 
   - Navigation drawer over status bar (Lollipop and Kitkat)
